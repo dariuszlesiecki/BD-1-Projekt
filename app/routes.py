@@ -80,5 +80,10 @@ def data(function=0):
             names = ['praca', 'imie wieźnia', 'nazwisko']
             execute_command("CREATE OR REPLACE VIEW view2 AS SELECT p.id_praca as id_praca, p.opis as opis, w.id_wiezien as id_wiezien,w.imie as imie, w.nazwisko as nazwisko FROM wiezien w JOIN praca_wieznia pw on w.id_wiezien=pw.id_wiezien JOIN praca p on pw.id_praca=p.id_praca")
             records= myselect("SELECT opis, imie, nazwisko FROM view2 ORDER BY opis")
+        
+        if function == '5':
+            names = ['wyrok', 'imie wieźnia', 'nazwisko']
+            execute_command("CREATE OR REPLACE VIEW view3 AS SELECT w.id_wyrok as id_wyrok, w.nazwa as nazwa, wi.id_wiezien as id_wiezien, wi.imie as imie, wi.nazwisko as nazwisko FROM wyrok w JOIN wyrok_wieznia ww on w.id_wyrok=ww.id_wyrok JOIN wiezien wi on ww.id_wiezien=wi.id_wiezien")
+            records= myselect("SELECT nazwa, imie, nazwisko FROM view3 ORDER BY nazwa")
     
     return render_template('data.html', records=records, names=names, show=show)
