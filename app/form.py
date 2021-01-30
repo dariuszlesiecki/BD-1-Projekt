@@ -30,7 +30,7 @@ class wizyta(FlaskForm):
 class wizytator(FlaskForm):
     imie = StringField("imię", validators=[InputRequired()])
     nazwisko = StringField("nazwisko", validators=[InputRequired()])
-    plec = SelectField("plec", choices = ['mężczyzna', 'kobieta', 'inne'] , validators=[InputRequired()])
+    plec = SelectField("płec", choices = ['mężczyzna', 'kobieta', 'inne'] , validators=[InputRequired()])
     submit = SubmitField("Dodaj")
 
 class wyrok(FlaskForm):
@@ -45,7 +45,7 @@ class wyrok_wieznia(FlaskForm):
 class wiezien(FlaskForm):
     imie = StringField("imię", validators=[InputRequired()])
     nazwisko = StringField("nazwisko", validators=[InputRequired()])
-    plec = SelectField("plec", choices = ['mężczyzna', 'kobieta', 'inne'] , validators=[InputRequired()])
+    plec = SelectField("płec", choices = ['mężczyzna', 'kobieta', 'inne'] , validators=[InputRequired()])
     id_cela = SelectField("id_cela",coerce=int, validators=[InputRequired()])
     data_rozpoczecia = DateField("data rozpoczecia (YYYY-MM-DD)", validators=[InputRequired()])
     data_zakonczenia = DateField("data zakonczenia (YYYY-MM-DD)", validators=[InputRequired()])
@@ -77,7 +77,7 @@ class pomieszczenie(FlaskForm):
 class pracownik(FlaskForm):
     imie = StringField("imię", validators=[InputRequired()])
     nazwisko = StringField("nazwisko", validators=[InputRequired()])
-    plec = SelectField("plec", choices = ['mężczyzna', 'kobieta', 'inne'] , validators=[InputRequired()])
+    plec = SelectField("płec", choices = ['mężczyzna', 'kobieta', 'inne'] , validators=[InputRequired()])
     id_zawod = SelectField("id_zawod",coerce=int, validators=[InputRequired()])
     id_pomieszczenie = SelectField("id_pomieszczenie",coerce=int)
     id_zmiana = SelectField("id_zmiana",coerce=int, validators=[InputRequired()])
