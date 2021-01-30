@@ -73,17 +73,21 @@ def data(function=0):
 
         if function == '3':
             names = ['nazwa bloku', 'numer celi']
-            execute_command("CREATE OR REPLACE VIEW view1 AS SELECT c.id_cela as id_cela, c.numer as numer, b.id_blok as id_blok, b.nazwa as nazwa FROM cela c JOIN blok b on b.id_blok=c.id_blok")
+            #execute_command("CREATE OR REPLACE VIEW view1 AS SELECT c.id_cela as id_cela, c.numer as numer, b.id_blok as id_blok, b.nazwa as nazwa FROM cela c JOIN blok b on b.id_blok=c.id_blok")
             records= myselect("SELECT nazwa, numer FROM view1")    
         
         if function == '4':
             names = ['praca', 'imie wieźnia', 'nazwisko']
-            execute_command("CREATE OR REPLACE VIEW view2 AS SELECT p.id_praca as id_praca, p.opis as opis, w.id_wiezien as id_wiezien,w.imie as imie, w.nazwisko as nazwisko FROM wiezien w JOIN praca_wieznia pw on w.id_wiezien=pw.id_wiezien JOIN praca p on pw.id_praca=p.id_praca")
+            #execute_command("CREATE OR REPLACE VIEW view2 AS SELECT p.id_praca as id_praca, p.opis as opis, w.id_wiezien as id_wiezien,w.imie as imie, w.nazwisko as nazwisko FROM wiezien w JOIN praca_wieznia pw on w.id_wiezien=pw.id_wiezien JOIN praca p on pw.id_praca=p.id_praca")
             records= myselect("SELECT opis, imie, nazwisko FROM view2 ORDER BY opis")
         
         if function == '5':
             names = ['wyrok', 'imie wieźnia', 'nazwisko']
-            execute_command("CREATE OR REPLACE VIEW view3 AS SELECT w.id_wyrok as id_wyrok, w.nazwa as nazwa, wi.id_wiezien as id_wiezien, wi.imie as imie, wi.nazwisko as nazwisko FROM wyrok w JOIN wyrok_wieznia ww on w.id_wyrok=ww.id_wyrok JOIN wiezien wi on ww.id_wiezien=wi.id_wiezien")
+            #execute_command("CREATE OR REPLACE VIEW view3 AS SELECT w.id_wyrok as id_wyrok, w.nazwa as nazwa, wi.id_wiezien as id_wiezien, wi.imie as imie, wi.nazwisko as nazwisko FROM wyrok w JOIN wyrok_wieznia ww on w.id_wyrok=ww.id_wyrok JOIN wiezien wi on ww.id_wiezien=wi.id_wiezien")
             records= myselect("SELECT nazwa, imie, nazwisko FROM view3 ORDER BY nazwa")
     
+        if function == '6':
+            names = ['data', 'imie wizytatora', 'nazwisko wizytatora','imie wieznia', 'nazwisko wieznia']
+            records= myselect("SELECT data, imie, nazwisko, wiezien_imie, wiezien_nazwisko FROM view4 ORDER BY data")
+
     return render_template('data.html', records=records, names=names, show=show)
